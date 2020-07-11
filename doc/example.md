@@ -36,8 +36,8 @@ is
 a
 multi-line
 comment
-#}
-io.out "you can also" #{ test #} " do this";
+}
+io.out "you can also" #{ test } " do this";
 ```
 
 # Function
@@ -107,10 +107,10 @@ io.in xyz;
 case xyz {
 	"1" {
 		io.out "first";
-	}
+	};
 	"2" {
 		io.out "second";
-	}
+	};
 	io.out "neither";
 };
 ```
@@ -136,6 +136,7 @@ com myio {
 ## main.infu
 ```
 use my.myio;
+imp my;
 myio.print "hello world!";
 ```
 
@@ -309,7 +310,7 @@ if z >= 4 { io.nl; io.out `str.line x 2 4`; };
 # Get System Info
 ```
 use std.io sys.info;
-imp std;
+imp std sys;
 io.out info_ver " " info_digit;
 ```
 
@@ -359,7 +360,7 @@ io.out p+q+m+n;
 ```
 use std.io std.web;
 imp std;
-var url:cons="github.com";
+val url="github.com";
 io.out `web.get url`;
 ```
 
@@ -372,4 +373,90 @@ io.in x y z;
 io.out `tool.max x y z` " " `tool.min x y z`;
 ```
 
+# Default Value
+```
+use std.io;
+imp std;
+var x:int=@;
+io.out x; # Output: 1
+```
 
+# Use A Package from the Internet
+```
+use pack.test;
+imp pack.*;
+test "io";
+```
+
+# Preprocessing
+```
+use std.io;
+imp std;
+#[if os == windows]{
+	io.out "compiled on windows"
+}
+#[elif os == macos || os == *nix || os == linux || os == *bsd]{
+	io.out "compiled on *nix"
+}
+#[else]{
+	#[error "failed to compile"]
+	#[note "unsupported os"]
+};
+```
+
+# For
+```
+use std.io;
+imp std;
+var x:int y:str;
+io.in x y;
+for z=0; y[z]!='.' && z<`size y`; z++;
+	io.out y[z];
+ret 0;
+```
+
+# Block
+```
+use std.io;
+imp std;
+fun basic_bf;
+# Easy to use DSL!!
+fun bf _prog:blo {
+	# A Subset of brainfuck
+	# Supports +,- and .
+	var _line=0;
+	rep `size _prog` {
+		basic_bf `conv str _prog[_line]`;
+		_line++;
+	};
+};
+var _cor:char:glo=0;
+fun basic_bf _prog:str {
+	var _ch:int=0;
+	rep `size _prog` {
+		case _prog[_ch] {
+			'+'{
+				_cor++;
+			};
+			'-'{
+				_cor--;
+			};
+			'.'{
+				io.out _cor;
+			};
+		};
+		_ch++;
+	};
+};
+bf {
+	++++++++++++++++++++++++++++++++++++++++
+	.
+	+.
+	--
+	..
+	-----
+	..
+	-
+	...
+} # Output: ()''""!!!
+```
