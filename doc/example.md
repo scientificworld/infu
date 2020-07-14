@@ -1,14 +1,12 @@
 # Hello World
 ```
 use std.io;
-imp std;
 io.out "hello world";
 ```
 
 # Input your name
 ```
 use std.io;
-imp std;
 var x;
 io.out "please enter your name:";
 io.in x;
@@ -19,15 +17,13 @@ io.nl; # nl -> new line
 # Call other programming language
 ```
 use std.io std.call;
-imp std;
-call.py 'print("hello world")';
+call.py "print("hello world")";
 io.out "\nhello everyone!";
 ```
 
 # Comments
 ```
 use std.io;
-imp std;
 io.out "nice to meet you!";
 # io.out "this sentence won't output";
 #{
@@ -43,7 +39,6 @@ io.out "you can also" #{ test } " do this";
 # Function
 ```
 use std.io;
-imp std;
 fun add x y {
 	ret x+y;
 };
@@ -54,7 +49,6 @@ io.out `add a b`;
 # Class / Struct / Namespace
 ```
 use std.io;
-imp std;
 com animal {
 	var age size height kind;
 };
@@ -66,7 +60,6 @@ rabbit.age=1;
 # Repeat
 ```
 use std.io;
-imp std;
 rep 5 {
 	io.out "welcome!";
 	io.nl;
@@ -76,7 +69,6 @@ rep 5 {
 # While...
 ```
 use std.io std.time;
-imp std;
 when 0 {
 	io.out "meow!"
 	time.wait 200;
@@ -87,12 +79,11 @@ when 0 {
 # If...
 ```
 use std.io;
-imp std;
 var test;
 io.in test;
 if test == "hello" {
 	io.out "world";
-}
+};
 else {
 	io.out "hello world";
 };
@@ -101,7 +92,6 @@ else {
 # Switch Case
 ```
 use std.io;
-imp std;
 var xyz;
 io.in xyz;
 case xyz {
@@ -120,7 +110,6 @@ case xyz {
 ## myio.infu
 ```
 use std.io;
-imp std;
 # mod myio;
 com myio {
 	fun print x[] {
@@ -136,14 +125,12 @@ com myio {
 ## main.infu
 ```
 use my.myio;
-imp my;
 myio.print "hello world!";
 ```
 
 # Define a Keyword
 ```
 use std.io;
-imp std;
 def out io.out;
 def in io.in;
 var a;
@@ -154,7 +141,6 @@ out a;
 # Exit Before The Program Ends
 ```
 use std.io;
-imp std;
 io.out "hello";
 ret 0;
 io.out " no world";
@@ -163,7 +149,6 @@ io.out " no world";
 # Goto A Place
 ```
 use std.io;
-imp std;
 io.out 1;
 io.out 2;
 jmp jump;
@@ -175,12 +160,16 @@ lab jump {
 io.out 6;
 io.out 7;
 io.out 8;
+jmp jump2;
+io.out 9;
+lab jump2;
+io.out 10;
+# Output: 1 2 4 5 6 7 8 10
 ```
 
 # Variable & Array
 ```
 use std.io;
-imp std;
 var x y[..]=("hello" "world") z=`size y`; # Y is an infinite array
 io.in x;
 io.out x;
@@ -199,30 +188,27 @@ del w z;
 
 # Set The Variable Type
 ```
-use std.io std.limit;
-imp std;
+use std.io std.lim;
 var x="10" y=10 z=97;
-limit.int x;
-limit.str y;
-limit.char z;
+lim.int x;
+lim.str y;
+lim.char z;
 io.out x ' ' y ' ' z;
 ```
 
 # Get Corrent Time
 ```
 use std.io std.time;
-imp std;
 io.out `time.get`;
 ```
 
 # String Operation
 ```
-use std.io;
-imp std;
+use std.io std.lim;
 var str;
 str="";
 str+=10;
-limit.str str;
+lim.str str;
 str+=" times 100";
 io.out str;
 ```
@@ -230,7 +216,6 @@ io.out str;
 # When An Error Occured
 ```
 use std.io;
-imp std;
 var x;
 io.in x;
 if x != 0 {
@@ -242,7 +227,6 @@ if x != 0 {
 # Read & Write File
 ```
 use std.io std.file;
-imp std;
 var name;
 io.in name;
 if ! `file.exist name` {
@@ -262,7 +246,6 @@ else {
 # Generate random number
 ```
 use std.io std.rand;
-imp std;
 var num;
 rep 5 {
 	num=`rand.int`;
@@ -275,7 +258,6 @@ io.out "5 random numbers generated."
 # Useful tools
 ```
 use std.io std.tool;
-imp std;
 var x y;
 io.in x y;
 tool.swp x y;
@@ -285,7 +267,6 @@ io.out x y;
 # Type of return value
 ```
 use std.io;
-imp std;
 fun pow:int x:int y:int {
 	var z=1;
 	rep y {
@@ -310,7 +291,6 @@ if z >= 4 { io.nl; io.out `str.line x 2 4`; };
 # Get System Info
 ```
 use std.io sys.info;
-imp std sys;
 io.out info_ver " " info_digit;
 ```
 
@@ -319,7 +299,7 @@ io.out info_ver " " info_digit;
 use std.io std.str;
 fun i2b:bool x:int {
 	if x == 0 { ret yes; }
-	else if x == 1 { ret no; } # else if == elif == elsif == elseif
+	elif x == 1 { ret no; } # else if == elif == elsif == elseif ???
 	else;
 };
 fun b2i:int x:bool {
@@ -359,7 +339,6 @@ io.out p+q+m+n;
 # Download a File
 ```
 use std.io std.web;
-imp std;
 val url="github.com";
 io.out `web.get url`;
 ```
@@ -367,7 +346,6 @@ io.out `web.get url`;
 # Useful Tools 2
 ```
 use std.io std.tool;
-imp std;
 var (x y z):int;
 io.in x y z;
 io.out `tool.max x y z` " " `tool.min x y z`;
@@ -376,28 +354,25 @@ io.out `tool.max x y z` " " `tool.min x y z`;
 # Default Value
 ```
 use std.io;
-imp std;
 var x:int=@;
-io.out x; # Output: 1
+io.out x; # Output: 0
 ```
 
 # Use A Package from the Internet
 ```
 use pack.test;
-imp pack.*;
 test "io";
 ```
 
 # Preprocessing
 ```
 use std.io;
-imp std;
 #[if os == windows]{
 	io.out "compiled on windows"
-}
+};
 #[elif os == macos || os == *nix || os == linux || os == *bsd]{
 	io.out "compiled on *nix"
-}
+};
 #[else]{
 	#[error "failed to compile"]
 	#[note "unsupported os"]
@@ -406,8 +381,7 @@ imp std;
 
 # For
 ```
-use std.io;
-imp std;
+use std.io std.str;
 var x:int y:str;
 io.in x y;
 for z=0; y[z]!='.' && z<`size y`; z++;
@@ -417,8 +391,7 @@ ret 0;
 
 # Block
 ```
-use std.io;
-imp std;
+use std.io std.str;
 fun basic_bf;
 # Easy to use DSL!!
 fun bf _prog:blo {
@@ -459,4 +432,33 @@ bf {
 	-
 	...
 }; # Output: ()''""!!!
+```
+
+# Use Local Packages
+```
+use std.io loc.match;
+var b:bool=`match "__()[]{}([{}])__"`;
+if b == yes ; io.out "match";
+else ; io.out "not match";
+```
+
+# Auto Include
+```
+use env;
+io.out `time.get` ": " `rand.int`;
+```
+
+# Assign to a Function
+```
+use std.io;
+fun getline:void = io.get;
+var x;
+getline x;
+```
+
+# Import A Combination
+```
+use std.io std.call;
+imp call io;
+line `sh "echo "hahaha"`;
 ```
