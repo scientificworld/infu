@@ -16,8 +16,8 @@ io.nl; # nl -> new line
 
 # Call other programming language
 ```
-use std.io std.call;
-call.py "print("hello world")";
+use std.io ext.call;
+call.py "print(\"hello world\")";
 io.out "\nhello everyone!";
 ```
 
@@ -52,7 +52,8 @@ use std.io;
 com animal {
 	var age size height kind;
 };
-animal rabbit;
+# animal rabbit;
+com rabbit=animal;
 rabbit.kind="rabbit";
 rabbit.age=1;
 ```
@@ -68,10 +69,10 @@ rep 5 {
 
 # While...
 ```
-use std.io std.time;
+use std.io std.tim;
 when 0 {
 	io.out "meow!"
-	time.wait 200;
+	tim.wait 200;
 	io.nl;
 }; # forever
 ```
@@ -164,6 +165,12 @@ jmp jump2;
 io.out 9;
 lab jump2;
 io.out 10;
+#{
+jmp jump3;
+io.out 11;
+jump3:;
+io.out 12;
+} # Deprecated
 # Output: 1 2 4 5 6 7 8 10
 ```
 
@@ -198,8 +205,8 @@ io.out x ' ' y ' ' z;
 
 # Get Corrent Time
 ```
-use std.io std.time;
-io.out `time.get`;
+use std.io std.tim;
+io.out `tim.get`;
 ```
 
 # String Operation
@@ -245,10 +252,10 @@ else {
 
 # Generate random number
 ```
-use std.io std.rand;
+use std.io std.ran;
 var num;
 rep 5 {
-	num=`rand.int`;
+	num=`ran.int`;
 	io.out num;
 	io.nl;
 };
@@ -257,10 +264,10 @@ io.out "5 random numbers generated."
 
 # Useful tools
 ```
-use std.io std.tool;
+use std.io std.tol;
 var x y;
 io.in x y;
-tool.swp x y;
+tol.swp x y;
 io.out x y;
 ```
 
@@ -291,49 +298,40 @@ if z >= 4 { io.nl; io.out `str.line x 2 4`; };
 # Get System Info
 ```
 use std.io sys.info;
-io.out info_ver " " info_digit;
+io.out ver " " digit;
 ```
 
 # New Type
 ```
-use std.io std.str;
-fun i2b:bool x:int {
-	if x == 0 { ret yes; }
-	elif x == 1 { ret no; } # else if == elif == elsif == elseif ???
-	else;
-};
-fun b2i:int x:bool {
-	if x == yes { ret 0; };
-	if x == no { ret 1; };
-};
-type bin {
-	fun todec:int i:bin {
-		var j:int=1 k:int=0 l:int=0;
-		rep `size i` {
-			k+=bin.
-		};
-		ret k;
+use std.io;
+type num {
+	var data:int;
+	redi x:num {
+		ret x.data;
+	};
+	redi = x:int {
+		if x >= 10 ; ret x%10;
+		elif x <= 0; ret 0;
+		else ; ret x;
+		# elif == else if == elsif == elseif ????
+	};
+	redi [int] x:num { ret x.data; }
+	redi +:num x:num y:num {
+		var z:int=x+y;
+		if z >= 10 ; ret [num](z%10);
+		else ; ret [num]z;
 	}
-	redi + a:bin b:bin {
-		ret `tobin `todec a` + `todec b``;
-	};
-	# oper = x:str
-	redi = x:str {
-		var z[..]:bool;
-		var y:int=0;
-		var w;
-		rep `str.size x` {
-			w=`str.cut x y`;
-			if ( w == 0 ) || ( w == 1 )
-				z[y]=`i2b w`;
-			y+=1;
-		};
-		ret z;
-	};
+	redi -:num x:num y:num {
+		var z:int=x-y;
+		if z <= 0 ; ret [num]0;
+		else ; ret [num]z;
+	}
+	redi @ {
+		ret 0;
+	}
 };
-var p:bin q:bin m:bin n:bin;
-io.int p q m n;
-io.out p+q+m+n;
+var (x=15 y=4):num;
+io.out x+y; # Output: 9
 ```
 
 # Download a File
@@ -345,10 +343,10 @@ io.out `web.get url`;
 
 # Useful Tools 2
 ```
-use std.io std.tool;
+use std.io std.tol;
 var (x y z):int;
 io.in x y z;
-io.out `tool.max x y z` " " `tool.min x y z`;
+io.out `tol.max x y z` " " `tol.min x y z`;
 ```
 
 # Default Value
@@ -360,7 +358,7 @@ io.out x; # Output: 0
 
 # Use A Package from the Internet
 ```
-use pack.test;
+use pac.test;
 test "io";
 ```
 
@@ -370,7 +368,7 @@ use std.io;
 #[if os == windows]{
 	io.out "compiled on windows"
 };
-#[elif os == macos || os == *nix || os == linux || os == *bsd]{
+#[elif os == macos || os == (*)nix || os == linux || os == (*)bsd]{
 	io.out "compiled on *nix"
 };
 #[else]{
@@ -391,7 +389,7 @@ ret 0;
 
 # Block
 ```
-use std.io std.str;
+use std.io std.str sys.util;
 fun basic_bf;
 # Easy to use DSL!!
 fun bf _prog:blo {
@@ -445,7 +443,7 @@ else ; io.out "not match";
 # Auto Include
 ```
 use env;
-io.out `time.get` ": " `rand.int`;
+io.out `tim.get` ": " `ran.int`;
 ```
 
 # Assign to a Function
@@ -461,4 +459,159 @@ getline x;
 use std.io std.call;
 imp call io;
 line `sh "echo "hahaha"`;
+```
+
+# Preprocessing 2
+```
+use std.io;
+#[def _JUST_FOR_A_TEST_];
+#[ifdef _JUST_FOR_A_TEST_]{
+	io.out "just for a test";
+};
+#[undef _JUST_FOR_A_TEST_];
+#[ifndef _JUST_FOR_A_TEST_]{
+	io.nl;
+	io.out "not just for a test";
+};
+```
+
+# Printf / Scanf
+```
+use std.io;
+var x;
+scan "%d" x;
+print "%c" x;
+```
+
+# Null / Nil
+```
+use std.io sys.num;
+var x:char;
+if x == nil ;
+	io.out "is nil"
+x=nul;
+if [int]x == 0 && x == nul ;
+	io.out "is null";
+```
+
+# Automatic Type Derivation
+```
+use std.io;
+var t:auto;
+t=10*100;
+# t="test"; # Compile Error
+if [type]t == :int ;
+	io.out t;
+```
+
+# Use a Package As ...
+```
+use std.io=iolib;
+iolib.io.out "an alias??";
+```
+
+# Set Up All the Elements
+```
+use std.io std.str;
+var x[100]:str="(21)";
+for var y=0 ; y<=100 ; y++ ; io.out x[y] ' ';
+ret 0;
+```
+
+# Wide Character
+```
+use std.io sys.wide;
+var w[]:wide="\u4f60\u597d";
+io.out w;
+```
+
+# Inf & NaN
+```
+use std.io sys.num;
+var x[..];
+if `size x` == inf {
+	io.out "is inf";
+};
+if 0/0 == nan {
+	io.out "is nan";
+};
+```
+
+# Slice
+```
+use std.io;
+var x[5]=(1 2 3 4 5 6);
+io.out x[0] ' ' x[1~4] ' ' x[0 1 2] ' ' x[~3] ' ' x[1~-1] ' ' x[~] ' ' x[1~];
+# Output: 1 2 3 4 5 1 2 3 1 2 3 4 2 3 4 5 1 2 3 4 5 6 2 3 4 5 6
+```
+
+# For ... In ...
+```
+use std.io;
+var y[]=("hello" "world" "hello world" "world hello");
+for tmp y ; io.out tmp ' ';
+```
+
+# More Readable
+```
+use std.io;
+{
+	io.out "hello";
+};
+io.out "world";
+```
+
+# Slice 2
+```
+use std.io;
+var x[9]=1 y[9]=1 z[19];
+z[~9]=x;
+z[10~]=y;
+io.out z;
+# Output: 1 1 1 1 ... (*20)
+```
+
+# Break / Continue
+```
+use std.io;
+for var x=0;x<=4;x++ {
+	if x == 2 ; bre;
+	else io.out x ' ';
+};
+for var y=0;y<=5;y++ {
+	if x == 1 ; ctn;
+	else io.out y ' ';
+};
+# Output: 0 1 0 2 3 4 5
+```
+
+# Macro
+```
+```
+
+# Enumerated Type
+```
+```
+
+# Template ??
+```
+use std.io;
+type test _type:type {
+	var _dat:_type;
+	fun typeof {
+		ret [type]_dat;
+	};
+};
+var _t:test::int;
+io.out `_t.typeof`; # Output: int
+```
+
+# Count Time
+```
+use std.io std.tim;
+io.out `tim.cnt `rep 10000``;
+```
+
+# Exception
+```
 ```
