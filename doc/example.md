@@ -397,7 +397,7 @@ fun bf _prog:blo {
 	# Supports +,- and .
 	var _line=0;
 	rep `size _prog` {
-		basic_bf `conv str _prog[_line]`;
+		basic_bf `conv :str _prog[_line]`;
 		_line++;
 	};
 };
