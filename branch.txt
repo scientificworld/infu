@@ -1,0 +1,6 @@
+current: Code currently under development, may not finished or will not compile
+dev: Currently completed code, functionality may be incomplete
+empty: Just an empty branch, with nothing in it
+latest: The latest release version of code
+master: The latest debug version of code
+release: All the released versions of the code are stored
