@@ -1,0 +1,63 @@
+#{
+
+	The Infinity Universe Programming Language Official Library.
+
+	Name: str
+	Full Name: String
+	Ver: 1.0
+	Std:
+
+}
+
+# use std.sco;
+# We don't need to use scope anymore, because we can use the infinite array
+
+com str {
+	fun cmp;
+	type str {
+		var __data[..]:char __len=0;
+		redi {
+			ret __data;
+		}
+		redi size {
+			ret __len;
+		}
+		redi = __arr[]:char {
+			var __cnt=0 __tmp=`size __arr`;
+			rep __tmp {
+				__data[__cnt++]=__tmp[__cnt];
+			};
+			__len=__tmp;
+		};
+		redi +:str __first:str __last:str {
+			var __siz1=`size __first` __siz2=`size __last` __add[__siz1+__siz2+2]:char __cnt=0;
+			rep __siz1 {
+				__add[__cnt++]=__first.__data[__cnt];
+			};
+			rep __siz2 {
+				__add[__cnt++]=__last.__data[__cnt];
+			};
+			ret __add;
+		};
+		redi += = @;
+		redi ==:bool __first:str __last:str {
+			ret `str.cmp __first.__data __last.__data`;
+		};
+		redi []:char __name:str __loc:int {
+			ret __name.__data;
+		};
+	};
+	fun cmp:bool __first[]:char __last[]:char {
+		var __cnt=0 __siz1=`size __first` __siz2=`size __last`;
+		if __siz1 != __siz2 ; ret no;
+		else {
+			rep __siz1 {
+				if __first[__cnt] != __last[__cnt] ; ret no;
+				__cnt++;
+			};
+			ret yes;
+		};
+	};
+};
+
+type str = str.str;

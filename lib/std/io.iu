@@ -1,0 +1,58 @@
+#{
+
+	The Infinity Universe Programming Language Official Library.
+	
+	Name: io
+	Full Name: Input & Output
+	Ver: 1.0
+	Std:
+
+}
+
+use sys.io=basic_io sys.util=util std.str;
+
+com io {
+	fun get:void &__get[] {
+		var __cnt:int=0 __res;
+		rep `size __get` {
+			__res=basic_io.in;
+			*__get[__cnt++]=__res;
+		};
+	};
+	fun out:void __out[] {
+		var __cnt:int=0;
+		rep `size __out` {
+			basic_io.out __out[__cnt++];
+		};
+	};
+	fun nl:void {
+		out "\n";
+	};
+	fun tab:void {
+		out "\t";
+	};
+	fun ch:char __num:int {
+		var __buf[__num]:char __bas __all:str __cnt:int=0 __sum:int=0;
+		when __sum < __num {
+			__bas=basic_io.in;
+			__sum+=`size __bas`;
+			__all+=__bas; __all+='\n';
+		};
+		rep __num {
+			__buf[__cnt]=`util.cut __all ++__cnt`;
+		};
+		ret __buf;
+	};
+	fun ch:void &__ch[] {
+		var __tmp[]:char=`ch:char `size __ch`` __cnt:int=0;
+		rep `size __tmp` {
+			*__ch[__cnt]=__tmp[__cnt++];
+		};
+		del __tmp;
+	};
+	fun in:void &__in[] {
+		var __cor __all;
+	};
+};
+
+del basic_io:com util:com;

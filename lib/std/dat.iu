@@ -1,0 +1,32 @@
+#{
+
+	The Infinity Universe Programming Language Official Library.
+
+	Name: dat
+	Full Name: Data Structures 1
+	Ver: 1.0
+	Std:
+
+}
+
+use std.str;
+
+com dat {
+	type ip {
+		redi {	
+		}
+		redi = __ip:str {
+			
+		}
+	};
+	type ema {
+		redi :str {
+		}
+	};
+	type url {
+	};
+	type dte {
+	};
+};
+
+type ip=dat.ip ema=dat.ema url=dat.url dte=dat.dte;

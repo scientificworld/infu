@@ -1,0 +1,12 @@
+#{
+
+	The Infinity Universe Programming Language Official Library.
+
+	Name: tol
+	Full Name: The Alias of the "tool" Library
+	Ver: -
+	Std: -
+
+}
+
+use std.tool;

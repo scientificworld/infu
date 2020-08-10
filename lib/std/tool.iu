@@ -1,0 +1,29 @@
+#{
+
+	The Infinity Universe Programming Language Official Library.
+
+	Name: tool
+	Full Name: Tools
+	Ver: 1.0
+	Std:
+
+}
+
+# use sys.num=num; # For Inf
+
+com tool {
+	fun max __first __last {
+		if __first >= __last ; ret __first;
+		else ; ret __last;
+	};
+	fun min __first __last {
+		if __first <= __last ; ret __first;
+		else ; ret __last;
+	};
+	fun max_ele __arr[]:int {
+		# var __max=-inf __cnt=0;
+
+	};
+	fun min_ele __arr[]:int {
+	};
+};

@@ -1,0 +1,16 @@
+#{
+
+	The Infinity Universe Programming Language Official Library.
+
+	Name: arr
+	Full Name: Extended Array
+	Ver: 1.0
+	Std:
+
+}
+
+com arr {
+	type arr __type:type {
+		var __data[..]:__type; __data[0]=@; # Why not (@ ...) ?
+	};
+};
