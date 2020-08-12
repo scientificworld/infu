@@ -15,14 +15,13 @@ namespace space {
 		else {
 			char w=x[++y];
 			while(1) {
-				if(w!=' '&&w!='\t'&&(z!=true||w!='\n')) {
-					return w;
-				}
-				else {
+				if(w!=' '&&w!='\t') {
+					if(z!=true||w!='\n') break;
 					if(x.size()-1>y) w=x[++y];
 					else return 0;
 				}
 			}
+			return w;
 		}
 	}
 	char last_item(std::string x,int y,bool z=true) {

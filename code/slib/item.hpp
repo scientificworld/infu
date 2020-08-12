@@ -15,13 +15,14 @@ namespace space {
 		else {
 			char w=x[++y];
 			while(1) {
-				if(w!=' '&&w!='\t') {
-					if(z!=true||w!='\n') break;
+				if(w!=' '&&w!='\t'&&(z!=true||w!='\n')) {
+					return w;
+				}
+				else {
 					if(x.size()-1>y) w=x[++y];
 					else return 0;
 				}
 			}
-			return w;
 		}
 	}
 	char last_item(std::string x,int y,bool z=true) {
@@ -29,13 +30,14 @@ namespace space {
 		else {
 			char w=x[--y];
 			while(1) {
-				if(w!=' '&&w!='\t') {
-					if(z!=true||w!='\n') break;
+				if(w!=' '&&w!='\t'&&(z!=true||w!='\n')) {
+					return w;
+				}
+				else {
 					if(y>0) w=x[--y];
 					else return 0;
 				}
 			}
-			return w;
 		}
 	}
 	// TODO: next_sub, last_sub
