@@ -3,6 +3,8 @@
 #include "infu_fmt_fmt_pre_t1.hpp"
 #include "infu_pre_comment_t1.hpp"
 #include "slib_match_t1.hpp"
+#include "slib_color_t1.hpp"
+#include "slib_color_t2.hpp"
 
 #ifndef _TEST_
 #define _TEST_
@@ -21,6 +23,10 @@ int main() {
 	infu_pre_comment_t1();
 	test("slib_match_t1");
 	slib_match_t1();
+	test("slib_color_t1");
+	slib_color_t1();
+	test("slib_color_t2");
+	slib_color_t2();
 	
 	return 0;
 }

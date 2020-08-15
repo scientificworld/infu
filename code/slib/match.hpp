@@ -20,6 +20,10 @@ namespace space {
 		}
 		return true;
 	}
+	bool rmatch(std::string x,std::string y,int z=std::string::npos) {
+		if(z==std::string::npos) z=x.size()-1;
+		// TODO
+	}
 }
 
 #endif
