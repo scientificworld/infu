@@ -16,12 +16,12 @@ namespace space {
 		std::cout<<"\e["<<_col<<'m';
 	}
 	const char* gcol(int _col) {
-		std::string _str="\e["+conv_i_c(_col)+'m';
+		std::string _str="\e["+space::conv_i_s(_col)+'m';
 		return _str.data();
 		// _str.data() == _str.c_str()
 	}
-	const char* RESET=gcol(0),HIGHLIGHT=gcol(1),LOWLIGHT=gcol(2);
-	const char* _res=RESET,_high=HIGHLIGHT,_low=LOWLIGHT,_hl=HIGHLIGHT,_ll=LOWLIGHT;
+	auto RESET=gcol(0),HIGHLIGHT=gcol(1),LOWLIGHT=gcol(2);
+	auto _res=RESET,_high=HIGHLIGHT,_low=LOWLIGHT,_hl=HIGHLIGHT,_ll=LOWLIGHT;
 }
 
 #endif

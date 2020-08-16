@@ -19,9 +19,9 @@ namespace space {
 		if(a[b]!=c) return -1;
 		int e=1,f=b+1;
 		while(f<a.size()&&e!=0) {
-			char g=a[f];
-			if(g==c) e++;
-			if(g==d) e--;
+			char g=a[b];
+			if(g==c){ e++; std::cout<<"+ "; }
+			if(g==d){ e--; std::cout<<"- "; }
 			if(++f>=a.size()&&e!=0) return -1;
 		}
 		return f-1;
@@ -31,9 +31,9 @@ namespace space {
 		if(a[b]!=d) return -1;
 		int e=1,f=b-1;
 		while(f>=0&&e!=0) {
-			char g=a[f];
-			if(g==c) e--;
-			if(g==d) e++;
+			char g=a[b];
+			if(g==c){ e--; std::cout<<"- "; }
+			if(g==d){ e++; std::cout<<"+ "; }
 			if(--f<0&&e!=0) return -1;
 		}
 		return f+1;

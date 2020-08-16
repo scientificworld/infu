@@ -19,7 +19,10 @@ namespace space {
 	}
 	int find_last(std::string x,std::string y,int z=string::npos) {
 		if(z==string::npos) z=x.size()-1;
-		for(int w=z;w>y.size();w--)
+		for(int w=z;w>y.size();w--) {
+			if(space::rmatch()) return w;
+		}
+		return -1;
 	}
 	// TODO: find_all
 }

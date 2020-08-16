@@ -5,6 +5,7 @@
 #include "slib_match_t1.hpp"
 #include "slib_color_t1.hpp"
 #include "slib_color_t2.hpp"
+#include "slib_part_t1.hpp"
 
 #ifndef _TEST_
 #define _TEST_
@@ -27,6 +28,8 @@ int main() {
 	slib_color_t1();
 	test("slib_color_t2");
 	slib_color_t2();
+	test("slib_part_t1");
+	slib_part_t1();
 	
 	return 0;
 }
